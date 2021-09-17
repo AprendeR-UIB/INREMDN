@@ -226,7 +226,7 @@ thm:unnamed-chunk-427
 exm:unnamed-chunk-429
 exm:unnamed-chunk-430
 introducción
-chap:estudios
+estudios-médicos
 sec:pasos
 algunos-calificativos-para-los-estudios-médicos
 estudios-descriptivos
@@ -240,7 +240,7 @@ revisiones-sistemáticas-y-metaanálisis
 bonus-track-unos-criterios-de-causalidad
 bonus-track-preguntas-clínicas-en-formato-pico
 test
-chap:conceptos
+algunos-conceptos-básicos
 unidad-de-observación
 población-y-muestra
 sec:muestreo
@@ -252,7 +252,7 @@ sec:oport
 sec:poli
 sec:sesgos
 test-1
-chap:probst
+probabilidades-elementales-las-mates
 álgebra-de-conjuntos
 algunas-fórmulas-básicas
 odds
@@ -270,16 +270,16 @@ sec:riesgosRR
 sec:riesgosCyC
 tratamientos
 test-3
-chap:edintro
+tipos-de-datos
 test-4
-chap:edcual
+descripción-de-datos-cualitativos
 sec:frecs
 gráficos
 tablas-de-frecuencias-multidimensionales
 sec:barrasbidim
 diagramas-de-mosaico
 test-5
-chap:edord
+descripción-de-datos-ordinales
 frecuencias-y-diagramas-de-barras
 test-6
 descripción-de-datos-cuantitativos
