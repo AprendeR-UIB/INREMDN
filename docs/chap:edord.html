@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Presentación | INREMDN.knit</title>
+  <title>Lección 8 Descripción de datos ordinales | INREMDN.knit</title>
   <meta name="description" content="" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Presentación | INREMDN.knit" />
+  <meta property="og:title" content="Lección 8 Descripción de datos ordinales | INREMDN.knit" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Presentación | INREMDN.knit" />
+  <meta name="twitter:title" content="Lección 8 Descripción de datos ordinales | INREMDN.knit" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="introducción.html"/>
+<link rel="prev" href="chap:edcual.html"/>
+<link rel="next" href="descripción-de-datos-cuantitativos.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -275,61 +275,991 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<!--bookdown:title:end-->
-<!--bookdown:title:start-->
-<div id="presentación" class="section level1 unnumbered">
-<h1>Presentación</h1>
-<p>Esto es una edición en línea de los apuntes de <em>Introducción a la Investigación en Salud y Bioestadística</em> del grado de Medicina de la UIB. Este trabajo se publica bajo licencia <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Atribución-No Comercial-SinDerivados 4.0</a></p>
-<p>Estos apuntes están permanentemente en construcción. En la lista siguiente iremos anunciando las actualizaciones:</p>
+<div id="chap:edord" class="section level1" number="8">
+<h1><span class="header-section-number">Lección 8</span> Descripción de datos ordinales</h1>
+<p>Los <strong>datos ordinales</strong> son parecidos a los cualitativos, en el sentido de que son cualidades de objetos o individuos. Su diferencia con los datos cualitativos está en que las características que expresan los datos ordinales tienen un orden natural que permite <strong>acumular</strong> observaciones, es decir, contar cuántas hay por debajo de cada nivel. Un caso frecuente son las escalas tipo <em>Likert</em>, que se usan para expresar el nivel de acuerdo o desacuerdo con una afirmación mediante respuestas cerradas.</p>
+
+<div class="example">
+<p><span id="exm:likert" class="example"><strong>Ejemplo 8.1  </strong></span>En una encuesta sobre la actitud de personal sanitario frente al dolor (M. E. Zanolin <em>et al</em>, “A questionnaire to evaluate the knowledge and attitudes of health care providers on pain”, <em>Journal of pain and symptom management</em> 33 (2007), pp. 727-736), se pidió el grado de conformidad con afirmaciones como:</p>
 <ul>
-<li>2021-09-15: Subidas las lecciones 1 a 12.</li>
+<li><p>Como los narcóticos pueden causar depresión respiratoria, no se han de usar en pacientes pediátricos.</p></li>
+<li><p>Es útil dar de entrada un placebo al paciente que se queja de dolor para saber si realmente siente dolor.</p></li>
 </ul>
-<p>El libro está escrito en <em>R Markdown</em>, usando <em>RStudio</em> como editor de textos y el paquete <strong>bookdown</strong> para convertir los ficheros <em>markdown</em> en un libro.</p>
-<p><strong>Significado de algunas cajas</strong>:</p>
-
-<div class="rmdimportant">
-Material muy importante.
+<p>según la escala Likert siguiente:</p>
 </div>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+Nivel
+</th>
+<th style="text-align:left;">
+Significado
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Muy en desacuerdo
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+En desacuerdo
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Neutral
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+De acuerdo
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+Muy de acuerdo
+</td>
+</tr>
+</tbody>
+</table>
+<p>Las respuestas a este tipo de cuestionarios son números, pero no son datos cuantitativos, sino ordinales: meras abreviaturas de los diferentes grados de conformidad.</p>
+<p>Para más información sobre escalas Likert, podéis consultar <a href="http://es.wikipedia.org/wiki/Escalas_Likert">la correspondiente entrada de la Wikipedia</a>.</p>
+<div id="frecuencias-y-diagramas-de-barras" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> Frecuencias y diagramas de barras</h2>
+<p>Cuando trabajamos con datos ordinales, el orden de los niveles de los datos permite calcular no sólo las frecuencias absolutas y relativas que veíamos en la lección anterior, y que para variables ordinales se definen del mismo modo, sino también frecuencias <strong>acumuladas</strong>. Es decir, no sólo podemos contar cuántas veces hemos observado un cierto nivel, sino también cuántas veces hemos observado un nivel menor o igual que él. Por lo tanto, su descripción estadística es la misma que para datos cualitativos, más:</p>
+<ul>
+<li><p><strong>Frecuencias absolutas acumuladas</strong>: El número de veces que aparece en la muestra un nivel menor o igual que el considerado.</p></li>
+<li><p><strong>Frecuencias relativas acumuladas</strong>: La fracción del total de la muestra que representan los niveles menores o iguales que el considerado.</p></li>
+</ul>
+<p>De nuevo, estas frecuencias acumuladas se pueden recoger en una <strong>tabla</strong> y representar en forma de <strong>diagrama de barras</strong> (con los niveles ordenados en orden creciente).</p>
 
-<div class="rmdcaution">
-¡Cuidado!
+<div class="example">
+<span id="exm:ex1701bis" class="example"><strong>Ejemplo 8.2  </strong></span>Tenemos una muestra de 20 estudiantes de quienes sabemos la calificación que han sacado en un examen. Clasificamos estas calificaciones en Suspenso (<em>S</em>), Aprobado (<em>A</em>), Notable (<em>N</em>) y Sobresaliente (<em>E</em>) y consideramos su orden natural <em>S</em> &lt; <em>A</em> &lt; <em>N</em> &lt; <em>E</em>. Las calificaciones que han obtenido son las siguientes:
+</div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="chap:edord.html#cb17-1" aria-hidden="true" tabindex="-1"></a>N, A, A, S, S, A, N, E, A, A, S, S, S, A, E, N, N, E, S, A</span></code></pre></div>
+<p>En esta lista hay 6 <em>S</em>, 7 <em>A</em>, 4 <em>N</em> y 3 <em>E</em>: éstas serían las frecuencias absolutas de las calificaciones en esta muestra de estudiantes. Por lo que se refiere a sus <strong>frecuencias absolutas acumuladas</strong>:</p>
+<ul>
+<li>Hay 6 estudiantes que han obtenido <em>S</em> o menos: la frecuencia acumulada de <em>S</em> es 6.</li>
+<li>Hay 13 estudiantes que han obtenido <em>A</em> o menos (6 <em>S</em> y 7 <em>A</em>): la frecuencia acumulada de <em>A</em> es 13.</li>
+<li>Hay 17 estudiantes que han obtenido <em>N</em> o menos (6 <em>S</em>, 7 <em>A</em> y 4 <em>N</em>): la frecuencia acumulada de <em>N</em> es 17.</li>
+<li>Hay 20 estudiantes que han obtenido <em>E</em> o menos (todos): la frecuencia acumulada de <em>E</em> es 20.</li>
+</ul>
+<p>La <strong>frecuencia relativa acumulada</strong> de cada calificación es la fracción del total de estudiantes que representa su frecuencia absoluta acumulada. Por ejemplo, la frecuencia relativa acumulada de notables es la proporción de estudiantes que han sacado un notable o menos, y, por lo tanto, es igual a la frecuencia absoluta acumulada de <em>N</em> dividida por el número total de estudiantes: 17/20=0.85. También se puede obtener “acumulando” las frecuencias relativas de las calificaciones menores o iguales que <em>N</em>: como hay un 30% de <em>S</em> (6 de 20), un 35% de <em>A</em> (7 de 20) y un 20% de <em>N</em> (4 de 20), la frecuencia relativa acumulada de <em>N</em> es 0.3+0.35+0.2=0.85, es decir, un 85%.</p>
+<p>Así pues, las frecuencias relativas acumuladas de las calificaciones en esta muestra son:</p>
+<ul>
+<li>Frecuencia relativa acumulada de <em>S</em>: 6/20=0.3.</li>
+<li>Frecuencia relativa acumulada de <em>A</em>: 13/20=0.65.</li>
+<li>Frecuencia relativa acumulada de <em>N</em>: 17/20=0.85.</li>
+<li>Frecuencia relativa acumulada de <em>E</em>: 20/20=1.</li>
+</ul>
+<p>Resumimos todos estos valores en la tabla siguiente:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Frecuencia absoluta
+</th>
+<th style="text-align:right;">
+Frecuencia relativa
+</th>
+<th style="text-align:left;">
+Porcentaje
+</th>
+<th style="text-align:right;">
+Frecuencia absoluta acumulada
+</th>
+<th style="text-align:right;">
+Frecuencia relativa acumulada
+</th>
+<th style="text-align:left;">
+Porcentaje acumulado
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Suspenso
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+<td style="text-align:left;">
+30%
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+<td style="text-align:left;">
+30%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Aprobado
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+0.35
+</td>
+<td style="text-align:left;">
+35%
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+0.65
+</td>
+<td style="text-align:left;">
+65%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Notable
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0.20
+</td>
+<td style="text-align:left;">
+20%
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+0.85
+</td>
+<td style="text-align:left;">
+85%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sobresaliente
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:left;">
+15%
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:left;">
+100%
+</td>
+</tr>
+</tbody>
+</table>
+
+<div class="example">
+<p><span id="exm:sexoger3" class="example"><strong>Ejemplo 8.3  </strong></span>Todos los ancianos recogidos en la tabla de datos del Ejemplo <a href="chap:edcual.html#exm:sexoger2">7.2</a> fueron diagnosticados con COVID-19 entre marzo y mayo de 2020. Vamos a ampliar dicha tabla de datos con información sobre la gravedad de su enfermedad, clasificada en cuatro niveles: Asintomática, Leve, Hospitalización (si requirió hospitalización pero no en UCI) y UCI. Consideraremos esta variable como ordinal, con sus niveles ordenados de esta manera.</p>
+</div>
+<p>La tabla de datos ampliada es la siguiente:</p>
+<table class="table table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:tablager3">Tabla 8.1: </span>Tabla de datos de pacientes de residencias geriátricas
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Sexo
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Demencia Senil
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Cáncer de mama
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+COVID-19
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Mujer
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Leve
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+Mujer
+</td>
+<td style="text-align:left;">
+Alzheimer
+</td>
+<td style="text-align:left;">
+Sí
+</td>
+<td style="text-align:left;">
+UCI
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+Hombre
+</td>
+<td style="text-align:left;">
+Alzheimer
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Leve
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+Mujer
+</td>
+<td style="text-align:left;">
+Otros
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Asintomática
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+Mujer
+</td>
+<td style="text-align:left;">
+Alzheimer
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Leve
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+Mujer
+</td>
+<td style="text-align:left;">
+Otros
+</td>
+<td style="text-align:left;">
+Sí
+</td>
+<td style="text-align:left;">
+Hospitalización
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+Mujer
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+UCI
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+Mujer
+</td>
+<td style="text-align:left;">
+Alzheimer
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Leve
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+Hombre
+</td>
+<td style="text-align:left;">
+Otros
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Leve
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Mujer
+</td>
+<td style="text-align:left;">
+Otros
+</td>
+<td style="text-align:left;">
+Sí
+</td>
+<td style="text-align:left;">
+Leve
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+Hombre
+</td>
+<td style="text-align:left;">
+Alzheimer
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Leve
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+Hombre
+</td>
+<td style="text-align:left;">
+Alzheimer
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Hospitalización
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+Mujer
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Leve
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:left;">
+Mujer
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Asintomática
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+Hombre
+</td>
+<td style="text-align:left;">
+Alzheimer
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Leve
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16
+</td>
+<td style="text-align:left;">
+Mujer
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Sí
+</td>
+<td style="text-align:left;">
+Asintomática
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+17
+</td>
+<td style="text-align:left;">
+Mujer
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Leve
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+Mujer
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Hospitalización
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+19
+</td>
+<td style="text-align:left;">
+Mujer
+</td>
+<td style="text-align:left;">
+Alzheimer
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Hospitalización
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20
+</td>
+<td style="text-align:left;">
+Hombre
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Leve
+</td>
+</tr>
+</tbody>
+</table>
+<p>Entonces:</p>
+<ul>
+<li>La tabla de frecuencias absolutas de la variable <em>COVID-19</em> es:
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+COVID-19
+</th>
+<th style="text-align:right;">
+Frecs.
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Asintomática
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Leve
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hospitalización
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UCI
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+</tbody>
+</table></li>
+<li>Su tabla de frecuencias relativas:
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+COVID-19
+</th>
+<th style="text-align:right;">
+Frecs.
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Asintomática
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Leve
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hospitalización
+</td>
+<td style="text-align:right;">
+0.20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UCI
+</td>
+<td style="text-align:right;">
+0.10
+</td>
+</tr>
+</tbody>
+</table></li>
+<li>Su tabla de frecuencias absolutas acumuladas:
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+COVID-19
+</th>
+<th style="text-align:right;">
+Frecs. Acum
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Asintomática
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Leve
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hospitalización
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UCI
+</td>
+<td style="text-align:right;">
+20
+</td>
+</tr>
+</tbody>
+</table></li>
+<li>Su tabla de frecuencias relativas acumuladas:
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+COVID-19
+</th>
+<th style="text-align:right;">
+Frecs. Acum
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Asintomática
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Leve
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hospitalización
+</td>
+<td style="text-align:right;">
+0.90
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UCI
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+</tr>
+</tbody>
+</table></li>
+<li>Su diagrama de barras de frecuencias absolutas acumuladas:</li>
+</ul>
+<p><img src="INREMDN_files/figure-html/unnamed-chunk-239-1.png" width="480" style="display: block; margin: auto;" /></p>
+<ul>
+<li>Su diagrama de barras de frecuencias relativas acumuladas:</li>
+</ul>
+<p><img src="INREMDN_files/figure-html/unnamed-chunk-240-1.png" width="480" style="display: block; margin: auto;" /></p>
+<ul>
+<li>La tabla bidimensional de frecuencias absolutas de las variables Demencia Senil y COVID-19:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Asintomática
+</th>
+<th style="text-align:right;">
+Leve
+</th>
+<th style="text-align:right;">
+Hospitalización
+</th>
+<th style="text-align:right;">
+UCI
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Alzheimer
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Otros
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Su tabla de frecuencias relativas acumuladas dentro de cada nivel de demencia senil:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Asintomática
+</th>
+<th style="text-align:right;">
+Leve
+</th>
+<th style="text-align:right;">
+Hospitalización
+</th>
+<th style="text-align:right;">
+UCI
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Alzheimer
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.625
+</td>
+<td style="text-align:right;">
+0.875
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Otros
+</td>
+<td style="text-align:right;">
+0.25
+</td>
+<td style="text-align:right;">
+0.750
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+0.25
+</td>
+<td style="text-align:right;">
+0.750
+</td>
+<td style="text-align:right;">
+0.875
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>El diagrama de barras yuxtapuestas de esta última tabla:</li>
+</ul>
+<p><img src="INREMDN_files/figure-html/unnamed-chunk-243-1.png" width="480" style="display: block; margin: auto;" /></p>
+
+<div class="rmdexercici">
+Calculad la tabla bidimensional de frecuencias relativas acumuladas de los niveles de gravedad de la COVID-19 en cada sexo, y representad esta tabla por medio de un diagrama de barras yuxtapuestas adecuado.
 </div>
 
 <div class="rmdexercici">
-Ejercicio.
+<p>En el estudio del ejercicio al final de la Sección <a href="chap:edcual.html#sec:barrasbidim">7.4</a>, entre los 60 enfermos hubo 12 de 40 años o menos, 3 entre 41 y 50 años, 15 entre 51 y 60 años y 30 de más de 60 años, mientras que los que no presentaron la enfermedad fueron, en estas franjas de edad, 29, 21, 17 y 18, respectivamente. Dad:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Un diagrama de barras bidimensional que muestre las frecuencias relativas de las diferentes franjas de edad en enfermos y en sanos.</p></li>
+<li><p>Un diagrama de barras bidimensional que muestre las frecuencias relativas acumuladas de las diferentes franjas de edad en enfermos y en sanos.</p></li>
+</ol>
 </div>
-
-<div class="rmdcorbes">
-Detalles matemáticos que os pueden interesar, pero que podéis obviar sin ningún problema.
 </div>
+<div id="test-6" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> Test</h2>
+<p><strong>(1)</strong> ¿Cuál es el valor con mayor frecuencia relativa acumulada en un conjunto de datos ordinales?</p>
+<ol style="list-style-type: decimal">
+<li>La moda del conjunto de datos.</li>
+<li>El relativamente más frecuente.</li>
+<li>El primer dato obtenido.<br />
+</li>
+<li>El último dato obtenido.<br />
+</li>
+<li>El mayor dato obtenido.</li>
+<li>Ninguna de las respuestas anteriores es correcta.</li>
+</ol>
+<p><strong>(2)</strong> A lo largo de un año se atendieron lesiones en la enfermería de un centro de secundaria con la siguiente distribución de gravedad: 26 muy leves, 28 leves, 15 moderadas, 8 graves y 3 muy graves. ¿Cuál es la frecuencia relativa acumulada del nivel de gravedad “Moderada”?</p>
+<ol style="list-style-type: decimal">
+<li>0.1875</li>
+<li>0.8625</li>
+<li>0.325</li>
+<li>0.2174</li>
+<li>0.69</li>
+<li>Ninguna de las anteriores.</li>
+</ol>
 
-<div class="rmdnote">
-Comentario que queremos enfatizar.
 </div>
-
-<div class="rmdrecordau">
-Comentario que queremos que recordéis
 </div>
-
-<div class="rmdromans">
-Cuestión en la que queremos que caigáis en la cuenta.
-</div>
-
-<div class="rmderrorpetit">
-Acabamos de matar un gatito
-</div>
-
-</div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="introducción.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="chap:edcual.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="descripción-de-datos-cuantitativos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
