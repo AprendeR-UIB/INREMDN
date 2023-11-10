@@ -343,7 +343,7 @@ sec:riesgosRR
 sec:riesgosCyC
 tratamientos
 test-3
-sec:tiposdatos
+tipos-de-datos
 test-4
 descripción-de-datos-cualitativos
 sec:frecs
